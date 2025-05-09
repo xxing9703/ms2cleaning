@@ -1,7 +1,7 @@
 % main script to run ms2cleaning
 
 fn = 'index.xlsx';  % an index file referencing MS2 files with inclusion lists
-prefix='TWAS_';
+prefix='diet_';
 mode='neg';
 
 settings.rtm=1; %rt window
