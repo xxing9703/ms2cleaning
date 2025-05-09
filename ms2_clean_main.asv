@@ -14,15 +14,12 @@ settings.ppm=5; %m/z ppm
 settings.cutoff=0.01; %intensity cutoff for mass spectra
 settings.corr=0.8; %correlation score cutoff
 
-% pull MS2 information from data
 folder=ms2_index(fn);  % auto generating index file, return the working folder.
 fn=fullfile(folder,fn);
 ms2info=ms2_index2info(fn,settings);
+save(fullfile(folder,'ms2info'),"ms2info",'-mat');
 %%
-% export .mat structure 
-save(fullfile(folder,'ms2info'),"ms2info",'-mat'); 
 
-% export mgf files (clean & unclean)
 fn_mgf = fullfile(folder, [prefix, mode,'_unclean.mgf']);
 cl=0; both=0;
 ms2_info2mgf(ms2info,fn_mgf,mode,cl,both)
