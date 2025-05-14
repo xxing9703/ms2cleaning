@@ -19,7 +19,11 @@ nMS2peaks=size(A,1); %number of MS2 peaks
 ct=0;ms2info=[];
 for i=1:nMS2peaks %loop over MS2 precursor peaks
    index = A{i,1}; %Compound ID   
-   rt = .5*(A{i,6}+A{i,7});  % avg of start rt and end rt
+  if(contains(A.Properties.VariableNames{7},'Window'))
+      rt = A{i,6};  %  rt and window
+  else
+      rt = .5*(A{i,6}+A{i,7});  % avg of start rt and end rt
+  end
    mz = A{i,4};
    iplus=find(abs([M.precursor]-mz)<0.005); %iplus should=i+1
    if isempty(iplus) % precursor in csv not found in the mzXML!

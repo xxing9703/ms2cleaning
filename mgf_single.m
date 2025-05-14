@@ -13,12 +13,18 @@ end
 ID=info.index;
 txt='BEGIN IONS\n';
 txt=[txt,'PEPMASS=',num2str(mz),'\n'];
-if strcmp(mode,'Negative')
+if strcmpi(mode,'Negative')||strcmpi(mode,'neg')
   txt=[txt,'CHARGE=1-','\n'];
-elseif strcmp(mode,'Positive')
+elseif strcmpi(mode,'Positive')||strcmpi(mode,'pos')
   txt=[txt,'CHARGE=1+','\n'];
 end   
-txt=[txt,'TITLE=','ID=',num2str(ID),'_mz=',num2str(mz),'_rt=',num2str(rt),'\n'];
+if iscell(ID)
+    ID=ID{1};
+elseif isnum(ID)
+    ID=['ID=',num2str(ID)];
+end
+
+txt=[txt,'TITLE=',ID,'_mz=',num2str(mz),'_rt=',num2str(rt),'\n'];
 %MS1
 if both==0
 else

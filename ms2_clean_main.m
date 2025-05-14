@@ -1,7 +1,7 @@
 % main script to run ms2cleaning
 
 fn = 'index.xlsx';  % an index file referencing MS2 files with inclusion lists
-prefix='diet_';
+prefix='RT_';
 mode='neg';
 
 settings.rtm=1; %rt window
@@ -10,8 +10,8 @@ settings.rtm_short=0.3;
 settings.ave=3; %moving average for EIC
 settings.prominence=1e3;
 settings.peakwidth=0.02;
-settings.ppm=5; %m/z ppm
-settings.cutoff=0.01; %intensity cutoff for mass spectra
+settings.ppm=5e-6; %m/z ppm
+settings.cutoff=0.001; %intensity cutoff for mass spectra
 settings.corr=0.8; %correlation score cutoff
 
 % pull MS2 information from data
@@ -20,7 +20,7 @@ fn=fullfile(folder,fn);
 ms2info=ms2_index2info(fn,settings);
 %%
 % export .mat structure 
-save(fullfile(folder,'ms2info'),"ms2info",'-mat'); 
+save(fullfile(folder,'ms2info.mat'),"ms2info",'-mat'); 
 
 % export mgf files (clean & unclean)
 fn_mgf = fullfile(folder, [prefix, mode,'_unclean.mgf']);
