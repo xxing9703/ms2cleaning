@@ -20,7 +20,7 @@ elseif strcmpi(mode,'Positive')||strcmpi(mode,'pos')
 end   
 if iscell(ID)
     ID=ID{1};
-elseif isnum(ID)
+elseif isnumeric(ID)
     ID=['ID=',num2str(ID)];
 end
 
