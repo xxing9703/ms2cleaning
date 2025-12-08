@@ -11,7 +11,7 @@ ms2info=[];
 % settings.cutoff=0.01; %intensity cutoff for mass spectra
 % settings.corr=0.8; %correlation score cutoff
 % ms2info=[];
-for i=1:size(A)
+for i=1:size(A,1)
     i
   ms2info=[ms2info,get_MS2info_com(A{i,1},A{i,2}, settings)];
 end
