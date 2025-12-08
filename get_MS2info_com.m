@@ -37,15 +37,13 @@ for i=1:nMS2peaks %loop over MS2 precursor peaks
    MS1_eic.rt=rt2;
    MS1_eic.inten=inten;
    MS1_eic.eic=tp{1}; %get MS1 eic
-   
-    
+
+   pk_.rt=rt2;
    MS1_ms=getMS(M(1),pk_);
    MS1_ms=MS1_ms{:}; %get MS1 ms
    %figure,stem(MS1_ms(:,1),MS1_ms(:,2),'.b')
    %figure,plot(MS1_eic(:,1),MS1_eic(:,3))
    
-   pk_.rt=rt2;
-   pk_.mz=mz; 
    MS2_ms=getMS(M(iplus),pk_); %get MS2 ms
    MS2_ms=MS2_ms{:};
    %figure,stem(MS2_ms(:,1),MS2_ms(:,2),'.b')
