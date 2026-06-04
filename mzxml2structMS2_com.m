@@ -18,7 +18,7 @@ end
 for f=1:length(B)
     mat=[];
    for i=1:length(B{f})      
-    rt_str=B{f}(i).retentionTime; %rt time
+    rt_str=char(B{f}(i).retentionTime); %rt time
     mat{i,1}=str2num(rt_str(3:end-1))/60;
     pair=B{f}(i).peaks.mz;%mass-inten pair
     mz=pair(1:2:length(pair)-1);
